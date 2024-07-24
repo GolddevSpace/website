@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Under Development Alert</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
+</head>
+<body>
+    <script>
+        function showInitialAlert() {
+            swal({
+                title: "This website is under heavy development",
+                text: "Would you like to join our discord server for updates?",
+                icon: "warning",
+                buttons: ["No", "Yes"],
+                dangerMode: true,
+            }).then((willJoin) => {
+                if (willJoin) {
+                    confirmDiscordRedirect();
+                } else {
+                    window.location.href = "https://www.google.com";
+                }
+            });
+        }
+
+        function confirmDiscordRedirect() {
+            swal({
+                title: "Notice",
+                text: "You are accessing third party websites. Do you want to proceed?",
+                icon: "info",
+                buttons: ["No", "Yes"],
+            }).then((willProceed) => {
+                if (willProceed) {
+                    window.location.href = "https://discord.gg/Brbg8B7Xc2";
+                } else {
+                    showInitialAlert();
+                }
+            });
+        }
+
+        // Trigger the initial alert when the page loads
+        window.onload = showInitialAlert;
+    </script>
+</body>
+</html>
